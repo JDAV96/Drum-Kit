@@ -1,13 +1,10 @@
-document.querySelectorAll(".drum").forEach((element) =>
-                                         {
-                                           element.addEventListener("click", () =>
-                                           {
-                                             makeSound(element.innerText);
-                                             pressedAnimation(element.innerText);
-                                           });
-                                         });
+$(".drum").click((e) =>
+{
+  makeSound(e.target.innerText);
+  pressedAnimation(e.target.innerText);
+});
 
-document.addEventListener("keydown", (e) =>
+$(document).keydown((e) =>
 {
   if (makeSound(e.key))
   {
@@ -59,8 +56,8 @@ function makeSound(key)
 
 function pressedAnimation(keyPressed)
 {
-  var activeButton = document.querySelector("." + keyPressed);
-  activeButton.classList.toggle("pressed");
+  var activeButton = $("." + keyPressed);
+  activeButton.addClass("pressed");
 
-  setTimeout(() => {activeButton.classList.toggle("pressed");}, 100);
+  setTimeout(() => {activeButton.removeClass("pressed");}, 100);
 }
